@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <!-- x-icon -->
+    <link rel="icon" href="../images/icon.png" type="image/x-icon">
+
+    <style>
+        /* Navbar Start */
+        body{
+            background-color: #333;
+        }
+        .navbar {
+            background-color: #000000;
+        }
+        .navbar .nav-link, .navbar .navbar-brand {
+            color: #ccc;
+            border-radius: 20px;
+            margin: 5px;
+        }
+        .navbar .nav-link:hover, .navbar .dropdown-item:hover {
+            color: #333;
+            background-color: #f8f9fa;
+            border-radius: 20px;
+        }
+        .dropdown-menu {
+            background-color: #111;
+        }
+        .dropdown-item {
+            color: #ccc;
+        }
+        .dropdown-submenu {
+            position: relative;
+        }
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: 0;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-submenu:hover .dropdown-menu {
+            display: block;
+        }
+        /* Navbar End */
+
+        
+    
+      /* Cart Start */
+      .cart-modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.7);
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+      }
+      
+      .cart-modal-content {
+          background: #333;
+          color: white;
+          padding: 20px;
+          max-height: 80%;
+          overflow-y: auto;
+          border-radius: 8px;
+          width: 60%;
+          position: relative;
+      }
+      
+      .cart-item {
+          background: #444;
+          padding: 10px;
+          margin: 10px 0;
+          border-radius: 5px;
+      }
+      
+      .cart-item h6 {
+          font-size: 18px;
+          font-weight: bold;
+      }
+      
+      .cart-item p {
+          font-size: 14px;
+          color: #ccc;
+      }
+      
+      .remove-btn {
+          background-color: #666;
+          color: white;
+          padding: 5px 10px;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+          margin-top: 5px;
+      }
+      
+      .remove-btn:hover {
+          background-color: #777;
+      }
+      
+      .close-btn {
+          background-color: #555;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+      }
+      
+      .close-btn:hover {
+          background-color: #777;
+      }
+      
+      .cart-icon {
+          font-size: 24px;
+          color: #bcaaaa;
+          cursor: pointer;
+      }
+      
+      .cart-count {
+          font-size: 16px;
+          background-color: #555;
+          color: white;
+          border-radius: 20%;
+          padding: 5px;
+          margin-left: 5px;
+      }
+      /* Cart End */
+
+        /* Contact Us Start*/
+        .contact {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+        .contact-section {
+            padding: 80px 20px;
+        }
+        .contact-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .contact-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f5f5f5;
+        }
+        .contact-title p {
+            font-size: 1rem;
+            color: #b3b3b3;
+            margin-bottom: 10%;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .contact-info i {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #b3b3b3;
+        }
+        .contact-info h5 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #f5f5f5;
+        }
+        .contact-info p {
+            margin: 0;
+            color: #b3b3b3;
+        }
+
+
+        .contact-form {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 70vh;
+            margin-top: -20%;
+        }
+        .contact-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #f5f5f5;
+            margin-top: 7%;
+        }
+        .form-control {
+            background-color: #2b2b2b;
+            color: #f5f5f5;
+            border: 1px solid #444;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .form-control::placeholder {
+            color: #b3b3b3;
+        }
+        .btn-submit {
+            background-color: #444;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .btn-submit:hover {
+            background-color: #666;
+        }
+        @media (max-width: 768px) {
+            .contact-info {
+                align-items: justify;
+                text-align: center;
+            }
+            .contact-info div {
+                justify-content: center;
+            }
+        }
+        /* Contact Us End */
+
+
+              /* Footer Start */
+              .footer {
+                  background-color: #191919;
+                  color: white;
+                  padding: 20px 0;
+                  font-family: arial, sans-serif;
+              }
+      
+              .footer .footer-logo{
+                  font-size: 24px;
+                  font-weight: bold;
+              }
+      
+              .footer-logo .text-white{
+                text-decoration: none;
+              }
+      
+              .footer-logo .text-white:hover{
+                text-decoration: underline;
+              }
+      
+              .footer .footer-links a {
+                  color: #dcdcdc;
+                  text-decoration: none;
+                  padding: 3px 0;
+                  display: block;
+                  transition: color 0.3s ease;
+              }
+      
+              .footer .footer-links a:hover {
+                  color: #ffffff;
+                  text-decoration: underline;
+              }
+      
+              .footer .social-icons a {
+                  color: #dcdcdc;
+                  font-size: 30px;
+                  padding: 0 10px;
+                  transition: color 0.3s ease;
+                  text-decoration: none;
+              }
+      
+              .footer .social-icons a:hover {
+                  color: #ffffff;
+                  text-decoration: none;
+              }
+
+              .footer .contact-info i{
+                font-size: 22px;
+                margin: 10px;
+              }
+      
+              .footer .contact-info p {
+                  color: #dcdcdc;
+                  margin-top: 10px;
+              }
+      
+              @media (max-width: 768px) {
+                  .footer .footer-links {
+                      text-align: center;
+                  }
+      
+                  .footer .social-icons {
+                      text-align: center;
+                  }
+      
+                  .footer .contact-info {
+                      text-align: center;
+                  }
+              }
+      /* Footer Ends */
+
+    </style>
+</head>
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="../images/Logo.png" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.html#About_Us">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.html#Gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="festivalsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Religions
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="festivalsDropdown">
+                          
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Islam</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Eid_Ul_Fitr.html">Eid-Ul-Fitr</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Eid_Al_Adha.html">Eid-Al-Adah</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Ramadan.html">Ramadan</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Hajj.html">Hajj</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Laylat_Ul_Qadr.html">Laylat al-Qadr</a></li>
+                                </ul>
+                            </li>
+                       
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Christianity</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Easter.html">Easter</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Christmas.html">Christmas</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Halloween.html">Halloween</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Pentecost.html">Pentecost</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Advent.html">Advent</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Judaism</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Purim.html">Purim</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Shabbat.html">Shabbat</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Rosh_Hashanah.html">Rosh Hashanah</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Sukkot.html">Sukkot</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Passover.html">Passover</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Buddhism</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Vesak.html">Vesak</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Parinirvana_Day.html">Parinirvana Day</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Magha_Puja.html">Magha Puja</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Uposatha.html">Uposatha</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Bodhi_Day.html">Bodhi Day</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Shinto</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Torii.html">Torii</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Haiden.html">Haiden</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Jinja.html">jinja</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Gohei.html">gohei</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Romon.html">romon</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Sikhism</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Baisakhi.html">Baisakhi</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Maghi.html">Maghi</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Diwali.html">Diwali</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Lohri.html">Lohri</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/TeeyaN.html">TeeyaN</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Hinduism</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Holi.html">Holi</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Navratri.html">Navratri</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Janmashtami.html">Janmashtami</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Raksha_Bandhan.html">Raksha Bandhan</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Rama_Navami.html">Rama Navami</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Taoism</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Lantern_Festival.html">Lantern Festival</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Qingming_Festival.html">Qingming Festival</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Supreme_Purity_festival.html">Supreme Purity Festival</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Nine_Emperor_Gods_Festival.html">Nine Emperor Gods Festival</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/All_Souls_Festival.html">All Souls Festival</a></li>
+                                </ul>
+                            </li>                            
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Zoroastrianism</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Ayathrima.html">Ayathrima</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Maidhyairya.html">Maidhyāirya</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Nowruz.html">Nowruz</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Maidhyoishema.html">Maidhyoishema</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Gahanbar.html">Gahanbar</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Voodoo</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Religions/Ouidah_Voodoo_Festival.html">Ouidah Voodoo Festival</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/VoodooFest.html">Voodoofest</a></li>
+                                    <li><a class="dropdown-item" href="../Religions/Festival_Of_Yemanja.html">Festival of Yemanjá</a></li>
+                                </ul>
+                            </li>                           
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#Books">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact_Us.html">Contact Us</a>
+                    </li>     
+                    <li class="nav-item">
+                        <a class="nav-link" href="Feedback.html">Feedback</a>
+                    </li>                
+                </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" id="cartIcon">
+                                        <i class="cart-icon">🛒</i>
+                                        <span id="cartCount" class="cart-count">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div id="cartModal" class="cart-modal" style="display:none;">
+                    <div class="cart-modal-content">
+                        <h4>Your Cart</h4>
+                        <div id="cartItemsContainer"></div>
+                        <button onclick="closeCart()" class="close-btn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!-- Navbar Ends -->
+
+<!-- Contact Us Start -->
+<div class="contact">
+<div class="container contact-section">
+    <div class="contact-title">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out to us for any inquiries or support.</p>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-lg-6 mb-4">
+            <div class="contact-info">
+                <div>
+                    <i class="bi bi-telephone"></i>
+                    <div>
+                        <h5>Phone:</h5>
+                        <p>&nbsp;&nbsp;+92 012 3456789</p>
+                    </div>
+                </div>
+                <div>
+                    <i class="bi bi-envelope"></i>
+                    <div>
+                        <h5>Email:</h5>
+                        <p>&nbsp;&nbsp;religions@festivals.com</p>
+                    </div>
+                </div>
+                <div>
+                    <i class="bi bi-house"></i>
+                    <div>
+                        <h5>Address:</h5>
+                        <p>&nbsp;&nbsp;B/424, North Nazimabad, Karachi</p>
+                    </div>
+                </div>
+                 <div>
+                    <i class="bi bi-geo-alt-fill"></i><br>
+                    <div>
+                        <h5>Location:&nbsp;&nbsp;</h5>
+                    </div></div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.7979752435717!2d67.04494800000003!3d24.938951299999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f3daae54d55%3A0x5dae2a3a4b71f12a!2sAptech%20Learning%20North%20Nazimabad%20II%20Center!5e0!3m2!1sen!2sus!4v1736629558158!5m2!1sen!2sus" width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="contact-form">
+                <h2>Send Message</h2>
+                <form id="contactForm">
+                    <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Type your Message..." required></textarea>
+                    <button type="submit" class="btn btn-submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Contact Us Ends -->
+
+
+
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footer-logo">
+                    <a href="../HTML & CSS/Index.html" class="text-white">Festivals</a>
+                </div>
+                <p class="mt-3">Festivals are lively celebrations that bring people together to honor cultural, religious, or historical traditions. They offer a chance for joy, unity, and shared experiences, enriching our lives with color and meaning.</p>
+            </div>
+  
+            <div class="col-md-3 footer-links footer-religions">
+              <h5 class="text-white">Religions</h5>
+              <a href="Index.html#islamCard">Islam</a>
+              <a href="Index.html#christianityCard">Christianity</a>
+              <a href="Index.html#judaismCard">Judaism</a>
+              <a href="Index.html#buddhismCard">Buddhism</a>
+              <a href="Index.html#shintoCard">Shinto</a>
+              <a href="Index.html#sikhismCard">Sikhism</a>
+              <a href="Index.html#hinduismCard">Hinduism</a>
+              <a href="Index.html#taoismCard">Taoism</a>
+              <a href="Index.html#zoroastrianismCard">Zoroastrianism</a>
+              <a href="Index.html#voodooCard">Voodoo</a>
+          </div>
+  
+            <div class="col-md-3 footer-links">
+                <h5 class="text-white">Quick Links</h5>
+                <a href="Index.html">Home</a>
+                <a href="Index.html#About_Us">About Us</a>
+                <a href="Index.html#Gallery">Gallery</a>
+                <a href="Index.html#Books">Books</a>
+                <a href="Contact_Us.html">Contact Us</a>
+                <a href="Feedback.html">Feedback</a>
+            </div>
+  
+            <div class="col-md-3 contact-info">
+                <h5 class="text-white">Contact Us</h5>
+                <p><i class="fas fa-map-marker-alt"></i> B/424 North Nazimabad, Karachi</p>
+                <p><i class="fas fa-phone-alt"></i> +92 012 3456789</p>
+                <p><i class="fas fa-envelope"></i> religions@festivals.com</p>
+            </div>
+        </div>
+  
+        <div class="row mt-3">
+            <div class="col-12 text-center social-icons">
+                <a href="#" class="fab fa-facebook-square"></a>
+                <a href="#" class="fab fa-twitter-square"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+        </div>
+    </div>
+  </footer>
+  <!-- Footer End -->
+
+
+
+
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- Java Script Start -->
+<script>
+
+// Navbar Start
+        document.querySelectorAll('.dropdown-submenu').forEach(function (submenu) {
+            submenu.addEventListener('mouseover', function () {
+                let dropdownMenu = submenu.querySelector('.dropdown-menu');
+                if (dropdownMenu) {
+                    dropdownMenu.style.display = 'block';
+                }
+            });
+            submenu.addEventListener('mouseout', function () {
+                let dropdownMenu = submenu.querySelector('.dropdown-menu');
+                if (dropdownMenu) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+// Navbar Ends
+
+
+// Cart Start
+let cart = [];
+
+function addToCart(itemName, itemDescription) {
+    const item = {
+        name: itemName,
+        description: itemDescription
+    };
+
+    cart.push(item);
+
+    document.getElementById("cartCount").innerText = cart.length;
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+
+    document.getElementById("cartCount").innerText = cart.length;
+
+    showCart();
+}
+
+function showCart() {
+    const cartContainer = document.getElementById("cartItemsContainer");
+
+    cartContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+        cart.forEach((item, index) => {
+            const cartItemDiv = document.createElement("div");
+            cartItemDiv.classList.add("cart-item");
+
+            cartItemDiv.innerHTML = `
+                <h6>${item.name}</h6>
+                <p>${item.description}</p>
+                <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            `;
+            cartContainer.appendChild(cartItemDiv);
+        });
+    }
+
+    const cartModal = document.getElementById("cartModal");
+    cartModal.style.display = "flex";
+}
+
+function closeCart() {
+    const cartModal = document.getElementById("cartModal");
+    cartModal.style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const itemName = button.getAttribute("data-name");
+            const itemDescription = button.getAttribute("data-description");
+
+            addToCart(itemName, itemDescription);
+        });
+    });
+
+    const cartIcon = document.getElementById("cartIcon");
+    cartIcon.addEventListener("click", showCart);
+});
+// Cart End
+
+
+
+// Contact Us Start
+ document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!fullName) {
+            alert('Please enter your full name.');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        if (!message) {
+            alert('Please type your message.');
+            return;
+        }
+
+        alert('Thank you! Your message has been sent.');
+        this.reset();
+    });
+
+// Contact Us End
+
+    </script>
+</body>
+</html>
